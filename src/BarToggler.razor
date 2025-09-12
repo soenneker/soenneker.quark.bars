@@ -1,0 +1,29 @@
+@using Microsoft.AspNetCore.Components.Web
+@inherits Soenneker.Quark.Components.Element
+
+<button @attributes="BuildAttributes()" @onclick="HandleToggle" type="button" data-bs-toggle="collapse" data-bs-target="@Target" aria-controls="@Target" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+@code {
+    [Parameter]
+    public string? Target { get; set; }
+
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnToggle { get; set; }
+
+    protected override Dictionary<string, object> BuildAttributes()
+    {
+        Dictionary<string, object> attributes = base.BuildAttributes();
+
+        attributes["class"] = AppendToClass(attributes.GetValueOrDefault("class")
+            ?.ToString(), "navbar-toggler");
+
+        return attributes;
+    }
+
+    private async Task HandleToggle(MouseEventArgs args)
+    {
+        await OnToggle.InvokeAsync(args);
+    }
+}

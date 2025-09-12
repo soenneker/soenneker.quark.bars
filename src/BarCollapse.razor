@@ -1,0 +1,15 @@
+@using Soenneker.Quark.Divs
+@inherits Soenneker.Quark.Components.Element
+
+<Div Class="collapse navbar-collapse" @attributes="BuildAttributes()">
+    @ChildContent
+</Div>
+
+@code {
+    protected override Dictionary<string, object> BuildAttributes()
+    {
+        Dictionary<string, object> attributes = base.BuildAttributes();
+
+        return attributes;
+    }
+}

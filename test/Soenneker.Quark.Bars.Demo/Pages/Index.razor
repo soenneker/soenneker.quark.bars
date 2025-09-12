@@ -1,0 +1,145 @@
+﻿@page "/"
+@using Microsoft.Extensions.Logging
+@using Soenneker.Quark.Bars
+@using Soenneker.Quark.Bars.Enums
+@using Soenneker.Quark.Enums.Colors
+
+@inject ILogger<Index> Logger
+
+<img src="https://user-images.githubusercontent.com/4441470/224455560-91ed3ee7-f510-4041-a8d2-3fc093025112.png" />
+<h1>Soenneker.Quark.Bars demo</h1>
+<p>This page demonstrates some of the common usages for the bars library.</p>
+<br />
+
+<hr />
+
+<div>
+    <h2>Basic Navigation Bar</h2>
+    <Bar Color="@Color.Light">
+        <BarBrand Href="#">Navbar</BarBrand>
+        <BarToggler Target="#navbarNav" />
+        <BarCollapse Id="navbarNav">
+            <BarNav>
+                <BarItem>
+                    <BarLink Href="#" Active="true">Home</BarLink>
+                </BarItem>
+                <BarItem>
+                    <BarLink Href="#">Features</BarLink>
+                </BarItem>
+                <BarItem>
+                    <BarLink Href="#">Pricing</BarLink>
+                </BarItem>
+                <BarItem>
+                    <BarLink Href="#" Disabled="true">Disabled</BarLink>
+                </BarItem>
+            </BarNav>
+        </BarCollapse>
+    </Bar>
+</div>
+
+<hr />
+
+<div>
+    <h2>Dark Navigation Bar</h2>
+    <Bar Color="@Color.Dark" Dark="true">
+        <BarBrand Href="#">Dark Navbar</BarBrand>
+        <BarToggler Target="#navbarNav2" />
+        <BarCollapse Id="navbarNav2">
+            <BarNav>
+                <BarItem>
+                    <BarLink Href="#" Active="true">Home</BarLink>
+                </BarItem>
+                <BarItem>
+                    <BarLink Href="#">About</BarLink>
+                </BarItem>
+                <BarItem>
+                    <BarLink Href="#">Contact</BarLink>
+                </BarItem>
+            </BarNav>
+            <BarNav Right="true">
+                <BarItem>
+                    <BarLink Href="#">Login</BarLink>
+                </BarItem>
+            </BarNav>
+        </BarCollapse>
+    </Bar>
+</div>
+
+<hr />
+
+<div>
+    <h2>Transparent Navigation Bar</h2>
+    <Bar Color="@Color.Primary" Transparent="true">
+        <BarBrand Href="#">Transparent</BarBrand>
+        <BarCollapse>
+            <BarNav>
+                <BarItem>
+                    <BarLink Href="#">Home</BarLink>
+                </BarItem>
+                <BarItem>
+                    <BarLink Href="#">Services</BarLink>
+                </BarItem>
+                <BarItem>
+                    <BarLink Href="#">Portfolio</BarLink>
+                </BarItem>
+            </BarNav>
+        </BarCollapse>
+    </Bar>
+</div>
+
+<hr />
+
+<div>
+    <h2>Fixed Top Navigation Bar</h2>
+    <Bar Color="@Color.Success" Placement="@BarPlacement.Fixed">
+        <BarBrand Href="#">Fixed Top</BarBrand>
+        <BarCollapse>
+            <BarNav>
+                <BarItem>
+                    <BarLink Href="#">Dashboard</BarLink>
+                </BarItem>
+                <BarItem>
+                    <BarLink Href="#">Reports</BarLink>
+                </BarItem>
+                <BarItem>
+                    <BarLink Href="#">Settings</BarLink>
+                </BarItem>
+            </BarNav>
+        </BarCollapse>
+    </Bar>
+    <div style="height: 200px; background-color: #f8f9fa; margin-top: 60px; padding: 20px;">
+        <p>Content below fixed navbar</p>
+    </div>
+</div>
+
+<hr />
+
+<div>
+    <h2>Sticky Navigation Bar</h2>
+    <Bar Color="@Color.Warning" Placement="@BarPlacement.Sticky">
+        <BarBrand Href="#">Sticky</BarBrand>
+        <BarCollapse>
+            <BarNav>
+                <BarItem>
+                    <BarLink Href="#">Products</BarLink>
+                </BarItem>
+                <BarItem>
+                    <BarLink Href="#">Solutions</BarLink>
+                </BarItem>
+                <BarItem>
+                    <BarLink Href="#">Support</BarLink>
+                </BarItem>
+            </BarNav>
+        </BarCollapse>
+    </Bar>
+    <div style="height: 200px; background-color: #e9ecef; padding: 20px;">
+        <p>Content that scrolls with sticky navbar</p>
+    </div>
+</div>
+
+@code {
+    protected override void OnInitialized()
+    {
+        Logger.LogInformation("Bars demo page initialized");
+    }
+}

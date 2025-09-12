@@ -1,0 +1,82 @@
+@using Soenneker.Quark.Bars.Enums
+@using Soenneker.Quark.Enums.Colors
+@inherits Soenneker.Quark.Components.Element
+
+<nav @attributes="BuildAttributes()">
+    @ChildContent
+</nav>
+
+@code {
+    [Parameter]
+    public BarType Type { get; set; } = BarType.Navbar;
+
+    [Parameter]
+    public BarPlacement Placement { get; set; } = BarPlacement.Top;
+
+    [Parameter]
+    public Color Color { get; set; } = Color.Light;
+
+    [Parameter]
+    public bool Expand { get; set; } = true;
+
+    [Parameter]
+    public bool Dark { get; set; }
+
+    [Parameter]
+    public bool Transparent { get; set; }
+
+    private string? GetTypeClass()
+    {
+        return Type.Value;
+    }
+
+    private string? GetPlacementClass()
+    {
+        if (Placement == BarPlacement.Fixed)
+            return $"fixed-{Placement.Value}";
+        if (Placement == BarPlacement.Sticky)
+            return $"sticky-{Placement.Value}";
+        return null;
+    }
+
+    private string? GetColorClass()
+    {
+        if (Dark)
+            return "navbar-dark";
+        return "navbar-light";
+    }
+
+    private string? GetBackgroundClass()
+    {
+        if (Transparent)
+            return "bg-transparent";
+        return $"bg-{Color.Value}";
+    }
+
+    protected override Dictionary<string, object> BuildAttributes()
+    {
+        Dictionary<string, object> attributes = base.BuildAttributes();
+
+        var baseClasses = GetTypeClass();
+        string? placementClass = GetPlacementClass();
+        string? colorClass = GetColorClass();
+        string? backgroundClass = GetBackgroundClass();
+
+        if (placementClass != null)
+            baseClasses = $"{baseClasses} {placementClass}";
+
+        if (colorClass != null)
+            baseClasses = $"{baseClasses} {colorClass}";
+
+        if (backgroundClass != null)
+            baseClasses = $"{baseClasses} {backgroundClass}";
+
+        if (Expand)
+            baseClasses = $"{baseClasses} navbar-expand-lg";
+
+        attributes["class"] = AppendToClass(attributes.GetValueOrDefault("class")
+            ?.ToString(), baseClasses);
+
+        return attributes;
+    }
+}
