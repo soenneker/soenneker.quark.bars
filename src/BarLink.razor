@@ -26,8 +26,7 @@
         if (Disabled)
             baseClass = $"{baseClass} disabled";
 
-        attributes["class"] = AppendToClass(attributes.GetValueOrDefault("class")
-            ?.ToString(), baseClass);
+        AppendToClassAttr(attributes, baseClass);
 
         if (Disabled)
             attributes["aria-disabled"] = "true";
