@@ -1,22 +1,14 @@
-@using Microsoft.AspNetCore.Components.Routing
+@using Soenneker.Quark.Anchors
 @inherits Soenneker.Quark.Components.Element
 
-@if (!string.IsNullOrEmpty(Href))
-{
-    <NavLink href="@Href" @attributes="BuildAttributes()">
-        @ChildContent
-    </NavLink>
-}
-else
-{
-    <a @attributes="BuildAttributes()">
-        @ChildContent
-    </a>
-}
+<Anchor To="@To" @attributes="BuildAttributes()" >
+    @ChildContent
+</Anchor>
 
 @code {
+
     [Parameter]
-    public string? Href { get; set; }
+    public string? To { get; set; }
 
     [Parameter]
     public bool Active { get; set; }
@@ -42,4 +34,5 @@ else
 
         return attributes;
     }
+
 }

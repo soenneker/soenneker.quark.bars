@@ -41,8 +41,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Soenneker.Quark.Components" Version="3.0.24" />
-        <PackageReference Include="Soenneker.Quark.Enums.Colors" Version="3.0.1" />
-        <PackageReference Include="Soenneker.Quark.Divs" Version="3.0.9" />
+        <PackageReference Include="Soenneker.Quark.Buttons" Version="3.0.19" />
+        <PackageReference Include="Soenneker.Quark.Divs" Version="3.0.10" />
     </ItemGroup>
 </Project>

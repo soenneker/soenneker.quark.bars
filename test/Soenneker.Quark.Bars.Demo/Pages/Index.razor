@@ -2,7 +2,7 @@
 @using Microsoft.Extensions.Logging
 @using Soenneker.Quark.Bars
 @using Soenneker.Quark.Bars.Enums
-@using Soenneker.Quark.Enums.Colors
+@using Soenneker.Quark.Dtos.Colors
 
 @inject ILogger<Index> Logger
 
@@ -16,21 +16,21 @@
 <div>
     <h2>Basic Navigation Bar</h2>
     <Bar Color="@Color.Light">
-        <BarBrand Href="#">Navbar</BarBrand>
+        <BarBrand To="#">Navbar</BarBrand>
         <BarToggler Target="#navbarNav" />
         <BarCollapse Id="navbarNav">
             <BarNav>
                 <BarItem>
-                    <BarLink Href="#" Active="true">Home</BarLink>
+                    <BarLink To="#" Active="true">Home</BarLink>
                 </BarItem>
                 <BarItem>
-                    <BarLink Href="#">Features</BarLink>
+                    <BarLink To="#">Features</BarLink>
                 </BarItem>
                 <BarItem>
-                    <BarLink Href="#">Pricing</BarLink>
+                    <BarLink To="#">Pricing</BarLink>
                 </BarItem>
                 <BarItem>
-                    <BarLink Href="#" Disabled="true">Disabled</BarLink>
+                    <BarLink To="#" Disabled="true">Disabled</BarLink>
                 </BarItem>
             </BarNav>
         </BarCollapse>
@@ -42,23 +42,23 @@
 <div>
     <h2>Dark Navigation Bar</h2>
     <Bar Color="@Color.Dark" Dark="true">
-        <BarBrand Href="#">Dark Navbar</BarBrand>
+        <BarBrand To="#">Dark Navbar</BarBrand>
         <BarToggler Target="#navbarNav2" />
         <BarCollapse Id="navbarNav2">
             <BarNav>
                 <BarItem>
-                    <BarLink Href="#" Active="true">Home</BarLink>
+                    <BarLink To="#" Active="true">Home</BarLink>
                 </BarItem>
                 <BarItem>
-                    <BarLink Href="#">About</BarLink>
+                    <BarLink To="#">About</BarLink>
                 </BarItem>
                 <BarItem>
-                    <BarLink Href="#">Contact</BarLink>
+                    <BarLink To="#">Contact</BarLink>
                 </BarItem>
             </BarNav>
             <BarNav Right="true">
                 <BarItem>
-                    <BarLink Href="#">Login</BarLink>
+                    <BarLink To="#">Login</BarLink>
                 </BarItem>
             </BarNav>
         </BarCollapse>
@@ -70,17 +70,17 @@
 <div>
     <h2>Transparent Navigation Bar</h2>
     <Bar Color="@Color.Primary" Transparent="true">
-        <BarBrand Href="#">Transparent</BarBrand>
+        <BarBrand To="#">Transparent</BarBrand>
         <BarCollapse>
             <BarNav>
                 <BarItem>
-                    <BarLink Href="#">Home</BarLink>
+                    <BarLink To="#">Home</BarLink>
                 </BarItem>
                 <BarItem>
-                    <BarLink Href="#">Services</BarLink>
+                    <BarLink To="#">Services</BarLink>
                 </BarItem>
                 <BarItem>
-                    <BarLink Href="#">Portfolio</BarLink>
+                    <BarLink To="#">Portfolio</BarLink>
                 </BarItem>
             </BarNav>
         </BarCollapse>
@@ -92,17 +92,17 @@
 <div>
     <h2>Fixed Top Navigation Bar</h2>
     <Bar Color="@Color.Success" Placement="@BarPlacement.Fixed">
-        <BarBrand Href="#">Fixed Top</BarBrand>
+        <BarBrand To="#">Fixed Top</BarBrand>
         <BarCollapse>
             <BarNav>
                 <BarItem>
-                    <BarLink Href="#">Dashboard</BarLink>
+                    <BarLink To="#">Dashboard</BarLink>
                 </BarItem>
                 <BarItem>
-                    <BarLink Href="#">Reports</BarLink>
+                    <BarLink To="#">Reports</BarLink>
                 </BarItem>
                 <BarItem>
-                    <BarLink Href="#">Settings</BarLink>
+                    <BarLink To="#">Settings</BarLink>
                 </BarItem>
             </BarNav>
         </BarCollapse>
@@ -117,17 +117,17 @@
 <div>
     <h2>Sticky Navigation Bar</h2>
     <Bar Color="@Color.Warning" Placement="@BarPlacement.Sticky">
-        <BarBrand Href="#">Sticky</BarBrand>
+        <BarBrand To="#">Sticky</BarBrand>
         <BarCollapse>
             <BarNav>
                 <BarItem>
-                    <BarLink Href="#">Products</BarLink>
+                    <BarLink To="#">Products</BarLink>
                 </BarItem>
                 <BarItem>
-                    <BarLink Href="#">Solutions</BarLink>
+                    <BarLink To="#">Solutions</BarLink>
                 </BarItem>
                 <BarItem>
-                    <BarLink Href="#">Support</BarLink>
+                    <BarLink To="#">Support</BarLink>
                 </BarItem>
             </BarNav>
         </BarCollapse>

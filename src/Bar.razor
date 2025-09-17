@@ -1,12 +1,13 @@
 @using Soenneker.Quark.Bars.Enums
-@using Soenneker.Quark.Enums.Colors
+@using Soenneker.Quark.Dtos.Colors
 @inherits Soenneker.Quark.Components.Element
 
-<nav @attributes="BuildAttributes()">
+<nav @attributes="BuildAttributes()" >
     @ChildContent
 </nav>
 
 @code {
+
     [Parameter]
     public BarType Type { get; set; } = BarType.Navbar;
 
@@ -34,8 +35,10 @@
     {
         if (Placement == BarPlacement.Fixed)
             return $"fixed-{Placement.Value}";
+
         if (Placement == BarPlacement.Sticky)
             return $"sticky-{Placement.Value}";
+
         return null;
     }
 
@@ -43,6 +46,7 @@
     {
         if (Dark)
             return "navbar-dark";
+
         return "navbar-light";
     }
 
@@ -50,14 +54,18 @@
     {
         if (Transparent)
             return "bg-transparent";
-        return $"bg-{Color.Value}";
+
+        if (Color.IsTheme)
+            return $"bg-{Color.Theme.Value}";
+
+        return null;
     }
 
     protected override Dictionary<string, object> BuildAttributes()
     {
         Dictionary<string, object> attributes = base.BuildAttributes();
 
-        var baseClasses = GetTypeClass();
+        string? baseClasses = GetTypeClass();
         string? placementClass = GetPlacementClass();
         string? colorClass = GetColorClass();
         string? backgroundClass = GetBackgroundClass();
@@ -74,9 +82,9 @@
         if (Expand)
             baseClasses = $"{baseClasses} navbar-expand-lg";
 
-        attributes["class"] = AppendToClass(attributes.GetValueOrDefault("class")
-            ?.ToString(), baseClasses);
+        AppendToClassAttr(attributes, baseClasses);
 
         return attributes;
     }
+
 }

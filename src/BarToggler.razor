@@ -1,9 +1,14 @@
 @using Microsoft.AspNetCore.Components.Web
+@using Soenneker.Blazor.Extensions.EventCallback
+@using Soenneker.Quark.Buttons
+@using Soenneker.Quark.Enums.ButtonTypes
+@using Soenneker.Quark.Spans
+
 @inherits Soenneker.Quark.Components.Element
 
-<button @attributes="BuildAttributes()" @onclick="HandleToggle" type="button" data-bs-toggle="collapse" data-bs-target="@Target" aria-controls="@Target" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-</button>
+<Button @attributes="BuildAttributes()" OnClick="HandleToggle" Type="@ButtonType.Button" data-bs-toggle="collapse" data-bs-target="@Target" aria-controls="@Target" aria-expanded="false" aria-label="Toggle navigation">
+    <Span class="navbar-toggler-icon"></Span>
+</Button>
 
 @code {
     [Parameter]
@@ -16,14 +21,13 @@
     {
         Dictionary<string, object> attributes = base.BuildAttributes();
 
-        attributes["class"] = AppendToClass(attributes.GetValueOrDefault("class")
-            ?.ToString(), "navbar-toggler");
+        AppendToClassAttr(attributes, "navbar-toggler");
 
         return attributes;
     }
 
     private async Task HandleToggle(MouseEventArgs args)
     {
-        await OnToggle.InvokeAsync(args);
+        await OnToggle.InvokeIfHasDelegate(args);
     }
 }

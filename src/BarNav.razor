@@ -1,11 +1,13 @@
 @using Soenneker.Quark.Divs
+
 @inherits Soenneker.Quark.Components.Element
 
-<Div Class="navbar-nav" @attributes="BuildAttributes()">
+<Div Class="navbar-nav" @attributes="BuildAttributes()" >
     @ChildContent
 </Div>
 
 @code {
+
     [Parameter]
     public bool Right { get; set; }
 
@@ -17,9 +19,9 @@
         if (Right)
             baseClass = $"{baseClass} ms-auto";
 
-        attributes["class"] = AppendToClass(attributes.GetValueOrDefault("class")
-            ?.ToString(), baseClass);
+        AppendToClassAttr(attributes, baseClass);
 
         return attributes;
     }
+
 }

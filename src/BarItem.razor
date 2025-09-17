@@ -1,11 +1,13 @@
 @using Soenneker.Quark.Divs
+
 @inherits Soenneker.Quark.Components.Element
 
-<Div Class="nav-item" @attributes="BuildAttributes()">
+<Div Class="nav-item" @attributes="BuildAttributes()" >
     @ChildContent
 </Div>
 
 @code {
+
     [Parameter]
     public bool Active { get; set; }
 
@@ -22,9 +24,9 @@
         if (Disabled)
             baseClass = $"{baseClass} disabled";
 
-        attributes["class"] = AppendToClass(attributes.GetValueOrDefault("class")
-            ?.ToString(), baseClass);
+        AppendToClassAttr(attributes, baseClass);
 
         return attributes;
     }
+
 }

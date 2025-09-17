@@ -1,4 +1,6 @@
+@using Soenneker.Extensions.String
 @using Soenneker.Quark.Divs
+
 @inherits Soenneker.Quark.Components.Element
 
 <Div Class="navbar-brand" @attributes="BuildAttributes()">
@@ -7,17 +9,17 @@
 
 @code {
     [Parameter]
-    public string? Href { get; set; }
+    public string? To { get; set; }
 
     protected override Dictionary<string, object> BuildAttributes()
     {
         Dictionary<string, object> attributes = base.BuildAttributes();
 
-        if (!string.IsNullOrEmpty(Href))
+        if (To.HasContent())
         {
-            attributes["href"] = Href;
-            attributes["class"] = AppendToClass(attributes.GetValueOrDefault("class")
-                ?.ToString(), "navbar-brand");
+            attributes["href"] = To;
+
+            AppendToClassAttr(attributes, "navbar-brand");
         }
 
         return attributes;
