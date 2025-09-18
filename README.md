@@ -1,4 +1,9 @@
-﻿# Soenneker.Quark.Bars
+﻿[![](https://img.shields.io/nuget/v/soenneker.quark.bars.svg?style=for-the-badge)](https://www.nuget.org/packages/soenneker.quark.bars/)
+[![](https://img.shields.io/github/actions/workflow/status/soenneker/soenneker.quark.bars/publish-package.yml?style=for-the-badge)](https://github.com/soenneker/soenneker.quark.bars/actions/workflows/publish-package.yml)
+[![](https://img.shields.io/nuget/dt/soenneker.quark.bars.svg?style=for-the-badge)](https://www.nuget.org/packages/soenneker.quark.bars/)
+[![](https://img.shields.io/badge/Demo-Live-blueviolet?style=for-the-badge&logo=github)](https://soenneker.github.io/soenneker.quark.bars/)
+
+# Soenneker.Quark.Bars
 
 A Blazor UI wrapper for navigation bars.
 
