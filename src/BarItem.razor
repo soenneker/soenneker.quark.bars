@@ -1,5 +1,3 @@
-@using Soenneker.Quark.Divs
-
 @inherits Soenneker.Quark.Element
 
 <Div Class="nav-item" @attributes="BuildAttributes()" >
@@ -7,6 +5,7 @@
 </Div>
 
 @code {
+	public override string? Name { get; set; } = "BarItem";
 
     [Parameter]
     public bool Active { get; set; }

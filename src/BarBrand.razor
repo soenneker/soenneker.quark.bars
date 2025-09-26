@@ -1,5 +1,4 @@
 @using Soenneker.Extensions.String
-@using Soenneker.Quark.Divs
 
 @inherits Soenneker.Quark.Element
 
@@ -8,6 +7,8 @@
 </Div>
 
 @code {
+	public override string? Name { get; set; } = "BarBrand";
+
     [Parameter]
     public string? To { get; set; }
 
