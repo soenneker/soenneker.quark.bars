@@ -1,6 +1,6 @@
 using Intellenum;
 
-namespace Soenneker.Quark.Bars.Enums;
+namespace Soenneker.Quark;
 
 /// <summary>
 /// Bar type enumeration.
