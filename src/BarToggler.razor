@@ -4,7 +4,7 @@
 @using Soenneker.Quark.Enums.ButtonTypes
 @using Soenneker.Quark.Spans
 
-@inherits Soenneker.Quark.Components.Element
+@inherits Soenneker.Quark.Element
 
 <Button @attributes="BuildAttributes()" OnClick="HandleToggle" Type="@ButtonType.Button" data-bs-toggle="collapse" data-bs-target="@Target" aria-controls="@Target" aria-expanded="false" aria-label="Toggle navigation">
     <Span class="navbar-toggler-icon"></Span>
