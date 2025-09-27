@@ -5,14 +5,14 @@
     {
         @(IconName as RenderFragment)
     }
-    else
+    else if (IconName is string)
     {
-        <Icon Name="@IconName" />
+        <Icon IconName="@(IconName as string)" />
     }
 </Div>
 
 @code {
-	public override string? Name { get; set; } = "BarIcon";
+    public override string? Name { get; set; } = "BarIcon";
 
     [Parameter]
     public object? IconName { get; set; }
