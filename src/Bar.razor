@@ -8,7 +8,7 @@
 	public override string? Name { get; set; } = "Bar";
 
     [Parameter]
-    public BarType Type { get; set; } = BarType.Navbar;
+    public BarMode Mode { get; set; } = BarMode.Horizontal;
 
     [Parameter]
     public BarPlacement Placement { get; set; } = BarPlacement.Top;
@@ -25,9 +25,25 @@
     [Parameter]
     public bool Transparent { get; set; }
 
-    private string? GetTypeClass()
+    [Parameter]
+    public bool Visible { get; set; } = true;
+
+    [Parameter]
+    public BarCollapseMode CollapseMode { get; set; } = BarCollapseMode.Hide;
+
+    [Parameter]
+    public BarMenuToggleBehavior MenuToggleBehavior { get; set; } = BarMenuToggleBehavior.AllowMultipleMenus;
+
+    private string? GetModeClass()
     {
-        return Type.Value;
+        return Mode.Value switch
+        {
+            BarMode.HorizontalValue => "navbar",
+            BarMode.VerticalPopoutValue => "navbar-vertical",
+            BarMode.VerticalInlineValue => "navbar-vertical",
+            BarMode.VerticalSmallValue => "navbar-vertical-small",
+            _ => "navbar"
+        };
     }
 
     private string? GetPlacementClass()
@@ -62,14 +78,30 @@
         return null;
     }
 
+    private string? GetCollapseClass()
+    {
+        if (!Visible)
+        {
+            return CollapseMode.Value switch
+            {
+                BarCollapseMode.HideValue => "navbar-hidden",
+                BarCollapseMode.SmallValue => "navbar-collapsed",
+                _ => "navbar-hidden"
+            };
+        }
+
+        return null;
+    }
+
     protected override Dictionary<string, object> BuildAttributes()
     {
         Dictionary<string, object> attributes = base.BuildAttributes();
 
-        string? baseClasses = GetTypeClass();
+        string? baseClasses = GetModeClass();
         string? placementClass = GetPlacementClass();
         string? colorClass = GetColorClass();
         string? backgroundClass = GetBackgroundClass();
+        string? collapseClass = GetCollapseClass();
 
         if (placementClass != null)
             baseClasses = $"{baseClasses} {placementClass}";
@@ -80,10 +112,14 @@
         if (backgroundClass != null)
             baseClasses = $"{baseClasses} {backgroundClass}";
 
-        if (Expand)
+        if (collapseClass != null)
+            baseClasses = $"{baseClasses} {collapseClass}";
+
+        if (Expand && Mode == BarMode.Horizontal)
             baseClasses = $"{baseClasses} navbar-expand-lg";
 
-        AppendToClassAttr(attributes, baseClasses);
+        if (baseClasses != null)
+            AppendToClassAttr(attributes, baseClasses);
 
         return attributes;
     }

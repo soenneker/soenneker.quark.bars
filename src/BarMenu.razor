@@ -1,10 +1,11 @@
 @inherits Soenneker.Quark.Element
 
-<Div Class="navbar-nav" @attributes="BuildAttributes()" >
+<Div Class="collapse navbar-collapse" @attributes="BuildAttributes()" >
     @ChildContent
 </Div>
 
 @code {
+	public override string? Name { get; set; } = "BarMenu";
 
     [Parameter]
     public bool Right { get; set; }
@@ -13,7 +14,7 @@
     {
         Dictionary<string, object> attributes = base.BuildAttributes();
 
-        var baseClass = "navbar-nav";
+        var baseClass = "collapse navbar-collapse";
 
         if (Right)
             baseClass = $"{baseClass} ms-auto";
